@@ -1,0 +1,47 @@
+{
+  "name": "extension_chrome_client",
+  "displayName": "Netflix Swedish Dub CLIENT",
+  "version": "1.0.0",
+  "description": "Netflix Swedish Dub is a Chrome extension that dubs with AI in realtime any movie on netflix",
+  "scripts": {
+    "dev": "plasmo dev",
+    "build": "plasmo build",
+    "package": "plasmo package"
+  },
+  "dependencies": {
+    "@plasmohq/messaging": "^0.6.2",
+    "firebase": "10.7.2",
+    "plasmo": "0.86.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "4.1.1",
+    "@types/chrome": "0.0.258",
+    "@types/node": "20.11.5",
+    "@types/react": "18.2.48",
+    "@types/react-dom": "18.2.18",
+    "prettier": "3.2.4",
+    "typescript": "5.3.3"
+  },
+  "manifest": {
+    "host_permissions": [
+      "$PLASMO_PUBLIC_API_URL/*"
+    ],
+    "permissions": [
+      "webRequest",
+      "offscreen",
+      "cookies"
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": [
+          "~inject.js"
+        ],
+        "matches": [
+          "https://www.netflix.com/*"
+        ]
+      }
+    ]
+  }
+}
