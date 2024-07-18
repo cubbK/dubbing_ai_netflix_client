@@ -22,8 +22,8 @@ Example video: [link](https://netflix-swedish-dub.fly.dev/)
 - Follow this guide and activate all the google cloud things and get your token https://cloud.google.com/text-to-speech/docs/create-audio-text-command-line
 - change the `const TOKEN=""` in content.ts to yours
 - `npm run dev`
-- in chrome activate developer extensions and `load unpacked` the build/extension folder
+- in chrome, activate developer extensions and `load unpacked` the build/extension folder
 - go to any netflix movie, activate swedish subtitles, put volume to 25% and reload(IMPORTANT) the page
 
 ## Run easier
-For convenience it's possible to install it directly from google web store, no google cloud account required https://netflix-swedish-dub.fly.dev/
+For convenience it's possible to install it directly from chrome web store, no google cloud account required https://netflix-swedish-dub.fly.dev/
