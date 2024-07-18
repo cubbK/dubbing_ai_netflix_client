@@ -3,6 +3,13 @@ import type { PlasmoCSConfig } from "plasmo"
 
 import { sendToBackground } from "@plasmohq/messaging"
 
+// https://cloud.google.com/text-to-speech/docs/create-audio-text-command-line - how to get token
+// EDIT THIS
+// ************
+const TOKEN = ""
+// ************
+//  END EDIT THIS
+
 export const config: PlasmoCSConfig = {
   matches: ["https://www.netflix.com/watch/*"],
   run_at: "document_start"
@@ -143,23 +150,47 @@ function startPlayAudio(video) {
 }
 
 async function fetchAudio(text, subtitleIndex, originalText) {
-  const result = await sendToBackground({
-    name: "synth",
-    body: {
-      text: text,
-      movieId: movieId,
-      originalText: originalText
+  const url = "https://texttospeech.googleapis.com/v1beta1/text:synthesize"
+  const requestBody = {
+    audioConfig: {
+      audioEncoding: "OGG_OPUS",
+      pitch: 0,
+      speakingRate: 1
+    },
+    input: {
+      text: text
+    },
+    voice: {
+      languageCode: "sv-SE",
+      name: "sv-SE-Wavenet-B"
     }
-  })
-  console.log(result)
-  if (result.status === "success") {
-    return {
-      subtitleIndex,
-      audioContent: result.audioContent
-    }
-  } else {
-    console.error("Error fetching subtitleIndex: ", subtitleIndex, result)
   }
+
+  const options = {
+    method: "POST",
+    url: url,
+    headers: {
+      Authorization: "Bearer " + TOKEN
+    },
+    body: JSON.stringify(requestBody)
+  }
+
+  return fetch(url, options)
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error("Network response was not ok")
+      }
+      return response.json()
+    })
+    .then(function (data) {
+      return {
+        subtitleIndex,
+        audioContent: data.audioContent
+      }
+    })
+    .catch(function (error) {
+      console.error("Error:", error)
+    })
 }
 
 /**
