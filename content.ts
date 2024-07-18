@@ -7,7 +7,7 @@ export const config: PlasmoCSConfig = {
   matches: ["https://www.netflix.com/watch/*"],
   run_at: "document_start"
 }
-console.log("Started 'Voice Over AI Netflix' extension! CLIENT")
+console.log("Started 'Voice Over AI Netflix' extension!")
 
 const movieId = window.location.pathname.replace("/watch/", "")
 // Add to current page.
@@ -142,12 +142,13 @@ function startPlayAudio(video) {
   })
 }
 
-async function fetchAudio(text, subtitleIndex) {
+async function fetchAudio(text, subtitleIndex, originalText) {
   const result = await sendToBackground({
     name: "synth",
     body: {
       text: text,
-      movieId: movieId
+      movieId: movieId,
+      originalText: originalText
     }
   })
   console.log(result)
@@ -169,7 +170,7 @@ async function fetchAudio(text, subtitleIndex) {
 function playAudio(subtitleIndex, timeLimit) {
   console.log("trying to play..", subtitleIndex)
   let audio = audios.find(
-    (audio) => audio.subtitleIndex === `subtitle${subtitleIndex.toString()}`
+    (audio) => audio?.subtitleIndex === `subtitle${subtitleIndex.toString()}`
   )
 
   console.log({ audios, audio })
@@ -226,9 +227,11 @@ async function startPrefetchingAudios(video) {
         audios.push({ subtitleIndex: closestSubtitle.id, status: "loading" })
 
         const formattedSubtitleText = formatSubtitleText(closestSubtitle.text)
+        const originalText = closestSubtitle.text
         const audio = await fetchAudio(
           formattedSubtitleText,
-          closestSubtitle.id
+          closestSubtitle.id,
+          originalText
         )
         audios[audios.length - 1] = audio
       } catch (err) {

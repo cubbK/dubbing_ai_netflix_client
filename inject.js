@@ -1,9 +1,6 @@
 console.log("Script Injected")
 
-document.body.insertAdjacentElement(
-  "beforeend",
-  "<div>HEY</div"
-)(function (xhr) {
+;(function (xhr) {
   var alreadyIndercepted = false
   var XHR = XMLHttpRequest.prototype
   var open = XHR.open

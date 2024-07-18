@@ -1,8 +1,9 @@
 {
-  "name": "extension_chrome_client",
-  "displayName": "Netflix Swedish Dub CLIENT",
-  "version": "1.0.0",
+  "name": "extension_chrome Netflix Swedish Dub",
+  "displayName": "Netflix Swedish Dub",
+  "version": "1.1.0",
   "description": "Netflix Swedish Dub is a Chrome extension that dubs with AI in realtime any movie on netflix",
+  "author": "Big Bizniz netflix-ai-dubbing@outlook.com",
   "scripts": {
     "dev": "plasmo dev",
     "build": "plasmo build",
@@ -29,8 +30,6 @@
       "$PLASMO_PUBLIC_API_URL/*"
     ],
     "permissions": [
-      "webRequest",
-      "offscreen",
       "cookies"
     ],
     "web_accessible_resources": [
