@@ -27,3 +27,6 @@ Example video: [link](https://netflix-swedish-dub.fly.dev/)
 
 ## Run easier
 For convenience it's possible to install it directly from chrome web store, no google cloud account required https://netflix-swedish-dub.fly.dev/
+
+[<img src="https://github.com/user-attachments/assets/090ef4c8-9222-459b-ad98-19b000fa9241">]([https://link-to-your-URL/](https://chromewebstore.google.com/detail/netflix-swedish-dub/jmdjbfgaenkgojidndddkkmkcnefimhg?hl=en&authuser=0))
+
