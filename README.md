@@ -26,7 +26,7 @@ Example video: [link](https://netflix-swedish-dub.fly.dev/)
 - go to any netflix movie, activate swedish subtitles, put volume to 25% and reload(IMPORTANT) the page
 
 ## Run easier
-For convenience it's possible to install it directly from chrome web store, no google cloud account required https://netflix-swedish-dub.fly.dev/
+For convenience it's possible to install it directly from chrome web store, no google cloud account or setting up required https://netflix-swedish-dub.fly.dev/
 
 <img src="https://github.com/user-attachments/assets/090ef4c8-9222-459b-ad98-19b000fa9241">
 
